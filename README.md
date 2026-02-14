@@ -1,9 +1,8 @@
-<h1>In this repository there are my own pet projects</h1>
-<p>If you want, you cand find something for yourself</p>
+# Mini projects
+
+A collections of small projects and experiments on languages that i learn
 
 
-
-
-<h2>List:</h2>
-<p>Wallpaper change</p>
-<p>Base conventor</p>
+## Projects:
+**wallpaper-change**: Python script to automatically change wallpapers from a folder.
+**base-conventer**: Simple base conventer in console.
