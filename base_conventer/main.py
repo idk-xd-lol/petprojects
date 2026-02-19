@@ -62,7 +62,7 @@ if mode == 0:
         else:
             num = num_list[i]
         result = str(num) + result
-        print(result)
+    print(result)
 
 #base-to-dec
 if mode == 1:
