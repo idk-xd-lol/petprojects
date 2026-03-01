@@ -12,6 +12,14 @@ def random(mod):
     rand_num = rand % mod
     return rand_num
 
-print(random(100))
+max = None
+while not max:
+    max = input("Enter max number: ")
+    try:
+        max = int(max)
+        max += 1
+    except:
+        max = None
 
-print(random(100))
+print(random(max))
+

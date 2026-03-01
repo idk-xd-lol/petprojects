@@ -1,11 +1,9 @@
+#wallpaper changer
 import os
 import time
 import random
 import subprocess
 import argparse
-
-#install swww for it to work
-#work only on linux, maybe
 
 #geting arguments
 parser = argparse.ArgumentParser()
@@ -32,10 +30,23 @@ path = args.path
 path = os.path.expanduser(path) #make full path (from ~ to /home/username...)
 
 wallpapers = os.listdir(path) #gets wallpapers to list
- 
-while True:
-    wallpaper = random.choice(wallpapers) #gets random wallpaper
-    wallpaper_path = os.path.join(path, wallpaper) #making full path to random wallpaper
-    subprocess.run(["swww", "img", wallpaper_path]) #execute program
-    time.sleep(args.change_duration)
 
+#run programm in background
+def run_detached(cmd):
+    subprocess.run(
+        cmd, 
+        stdout=subprocess.DEVNULL, 
+        stderr=subprocess.DEVNULL, 
+        stdin=subprocess.DEVNULL,
+        start_new_session=True 
+    )
+
+while True:
+    wallpaper = random.choice(wallpapers)
+    wallpaper_path = os.path.join(path, wallpaper)
+    
+    run_detached(["swww", "img", wallpaper_path])
+    run_detached(["wal", "-n", "-q", "-i", wallpaper_path])
+    run_detached(["matugen", "image", wallpaper_path])
+    
+    time.sleep(args.change_duration)
